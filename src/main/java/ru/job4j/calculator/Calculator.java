@@ -1,21 +1,26 @@
 package ru.job4j.calculator;
 
+import static ru.job4j.math.MathFunction.*;
+
 public class Calculator {
 
-    public static void plus(int first, int second) {
-        int result = first + second;
-        System.out.println(result);
+    public static double sumAndMultiply(double first, double second) {
+        return sum(first, second)
+                + multiply(first, second);
     }
 
-    public static void minus(int first, int second) {
-        int result = first - second;
-        System.out.println(result);
+    public static double sumAndSubstractionAndDiv(double first, double second) {
+        return sum(subtraction(first, second), dividing(first, second));
+    }
+
+    public static double sum4Func(double first, double second) {
+        return sum(first, second) + multiply(first, second)
+                + subtraction(first, second) + dividing(first, second);
     }
 
     public static void main(String[] args) {
-        plus(1, 2);
-        plus(10, 11);
-        minus(7, 3);
-        minus(2, 6);
+        System.out.println("Результат расчета равен: " + sumAndMultiply(10, 20));
+        System.out.println("Результат расчета равен: " + sumAndSubstractionAndDiv(50, 10));
+        System.out.println("Результат расчета равен: " + sum4Func(234, 2));
     }
 }
