@@ -7,7 +7,7 @@ public class ThreeMaxTest {
     @Test
     public void firstMax() {
         int first = 10;
-        int second = 5;
+        int second = 55;
         int third = 1;
         int result = ThreeMax.max(first, second, third);
         int expected = 10;
