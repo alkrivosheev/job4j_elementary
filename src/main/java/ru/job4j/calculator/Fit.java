@@ -2,21 +2,46 @@ package ru.job4j.calculator;
 
 public class Fit {
 
-    public static double manWeight(short height) {
-        double rsl = (height - 100) * 1.15;
-        return rsl;
+    /**
+     * Calculates the ideal weight based on height and a base value.
+     *
+     * @param height the height of the person
+     * @param base the base value to be subtracted from height
+     * @return the ideal weight
+     */
+    private static double calculateWeight(short height, int base) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Height must be greater than zero");
+        }
+        return (height - base) * 1.15;
     }
 
-    public static double womanWeight(short height) {
-        double rsl = (height - 110) * 1.15;
-        return rsl;
+    /**
+     * Calculates the ideal weight for a man based on his height.
+     *
+     * @param heightMan the height of the man
+     * @return the ideal weight
+     */
+    public static double manWeight(short heightMan) {
+        return calculateWeight(heightMan, 100);
+    }
+
+    /**
+     * Calculates the ideal weight for a woman based on her height.
+     *
+     * @param heightWoman the height of the woman
+     * @return the ideal weight
+     */
+    public static double womanWeight(short heightWoman) {
+        return calculateWeight(heightWoman, 110);
     }
 
     public static void main(String[] args) {
-        short height = 187;
-        double man = Fit.manWeight(height);
-        double woman = Fit.womanWeight(height);
+        short heightMan = 187;
+        short heightWoman = 170;
+        double man = Fit.manWeight(heightMan);
         System.out.println("Man 187 is " + man);
-        System.out.println("Woman 187 is " + woman);
+        double woman = Fit.womanWeight(heightWoman);
+        System.out.println("Woman 170 is " + woman);
     }
 }
